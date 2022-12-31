@@ -15,7 +15,7 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
+import crawlerIcon from './icons/crawler.jpeg'
 const solutions = [
     {
         name: 'تحلیل داده ها',
@@ -80,21 +80,21 @@ function classNames(...classes) {
 
 export default function Header() {
     return (
-        <Popover className="relative bg-white">
+        <Popover className="relative bg-isabelline">
             <div className="mx-auto max-w-7xl px-4 sm:px-6">
                 <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
                     <div className="flex justify-start lg:w-0 lg:flex-1">
                         <a href="#">
-                            <span className="sr-only">Your Company</span>
+                            <span className="sr-only">Web crawler</span>
                             <img
                                 className="h-8 w-auto sm:h-10"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                src={crawlerIcon}
                                 alt=""
                             />
                         </a>
                     </div>
                     <div className="-my-2 -mr-2 md:hidden">
-                        <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blackolive">
                             <span className="sr-only">Open menu</span>
                             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                         </Popover.Button>
@@ -106,7 +106,7 @@ export default function Header() {
                                     <Popover.Button
                                         className={classNames(
                                             open ? 'text-gray-900' : 'text-gray-500',
-                                            'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                                            'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blackolive focus:ring-offset-2'
                                         )}
                                     >
                                         <span>کارکرد ما </span>
@@ -137,7 +137,7 @@ export default function Header() {
                                                             href={item.href}
                                                             className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
                                                         >
-                                                            <item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
+                                                            <item.icon className="h-6 w-6 flex-shrink-0 text-blackolive" aria-hidden="true" />
                                                             <div className="ml-4">
                                                                 <p className="text-base font-medium text-gray-900">{item.name}</p>
                                                                 <p className="mt-1 text-sm text-gray-500">{item.description}</p>
@@ -184,7 +184,7 @@ export default function Header() {
                         </a>
                         <a
                             href="#"
-                            className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                            className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blackolive px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blackolive"
                         >
                             ثبت نام
                         </a>
@@ -208,12 +208,12 @@ export default function Header() {
                                 <div>
                                     <img
                                         className="h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                        src={crawlerIcon}
                                         alt="Your Company"
                                     />
                                 </div>
                                 <div className="-mr-2">
-                                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blackolive">
                                         <span className="sr-only">Close menu</span>
                                         <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                                     </Popover.Button>
@@ -227,7 +227,7 @@ export default function Header() {
                                             href={item.href}
                                             className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
                                         >
-                                            <item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
+                                            <item.icon className="h-6 w-6 flex-shrink-0 text-blackolive" aria-hidden="true" />
                                             <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
                                         </a>
                                     ))}
@@ -256,13 +256,13 @@ export default function Header() {
                             <div>
                                 <a
                                     href="#"
-                                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-blackolive px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blackolive"
                                 >
                                     Sign up
                                 </a>
                                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                                     Existing customer?{' '}
-                                    <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                                    <a href="#" className="text-blackolive hover:text-blackolive">
                                         Sign in
                                     </a>
                                 </p>
