@@ -1,5 +1,6 @@
 package ir.darja.dataleh.util;
 
+import org.springframework.stereotype.Component;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Component
 public class ReadLoc {
     public ArrayList<String> readData(String hostname) throws ParserConfigurationException, SAXException, IOException {
         //Get Document Builder
