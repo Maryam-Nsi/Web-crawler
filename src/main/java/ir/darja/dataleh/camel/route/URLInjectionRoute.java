@@ -1,5 +1,6 @@
 package ir.darja.dataleh.camel.route;
 
+import ir.darja.dataleh.camel.process.DataSaverProcessor;
 import ir.darja.dataleh.camel.process.HtmlDownloaderProcessor;
 import ir.darja.dataleh.camel.process.InformationExtractorProcessor;
 import ir.darja.dataleh.camel.process.URLInjectorProcessor;
@@ -16,6 +17,7 @@ public class URLInjectionRoute extends RouteBuilder {
     private final URLInjectorProcessor urlInjectorProcessor;
     private final HtmlDownloaderProcessor htmlDownloaderProcessor;
     private final InformationExtractorProcessor informationExtractorProcessor;
+    private final DataSaverProcessor dataSaverProcessor;
 
     @Override
     public void configure() throws Exception {
@@ -29,8 +31,8 @@ public class URLInjectionRoute extends RouteBuilder {
                 .to("direct:informationExtraction");
 
         from("direct:informationExtraction")
-                .process(informationExtractorProcessor);
-
-
+                .process(informationExtractorProcessor)
+                .process(dataSaverProcessor)
+                .process(e -> System.err.println("done!"));
     }
 }
