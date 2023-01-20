@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HtmlDownloaderProcessor implements Processor {
+public class HtmlFetcherProcessor implements Processor {
     @Value("${jsoup.default-user-agent}")
     private String userAgent;
 

@@ -14,15 +14,15 @@ import java.util.UUID;
 @Component
 @RequiredArgsConstructor
 public class URLInjectionRouteEnabler {
-    @Value("${URLInjection.producerSeda}")
-    private String producerSeda;
+    @Value("${context.endpoint.urlInjection.producer}")
+    private String producer;
     private final CamelContext camelContext;
 
     public void enable(UUID taskUuid, TaskConfigurationInputDTO inputDTO) throws IOException {
         ProducerTemplate producerTemplate = null;
         try {
             producerTemplate = camelContext.createProducerTemplate();
-            producerTemplate.sendBody(producerSeda, TaskAndTaskIdDTO.builder().taskId(taskUuid).inputDTO(inputDTO).build());
+            producerTemplate.sendBody(producer, TaskAndTaskIdDTO.builder().taskId(taskUuid).inputDTO(inputDTO).build());
         } finally {
             assert producerTemplate != null;
             producerTemplate.close();
