@@ -7,8 +7,6 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 @RequiredArgsConstructor
 public class URLInjectorProcessor implements Processor {
@@ -21,6 +19,7 @@ public class URLInjectorProcessor implements Processor {
         TaskAndTaskIdDTO taskAndTaskIdDTO = exchange.getMessage().getBody(TaskAndTaskIdDTO.class);
         exchange.getMessage().setHeader(TASK_ID_HEADER_KEY, taskAndTaskIdDTO.getTaskId().toString());
         exchange.getMessage().setHeader(FEATURES_HEADER_KEY, taskAndTaskIdDTO.getInputDTO().getFeatures());
-        exchange.getMessage().setBody(readLoc.readData(taskAndTaskIdDTO.getInputDTO().getHostName()));
+        exchange.getMessage().setBody(readLoc.readData(taskAndTaskIdDTO.getInputDTO().getHostName(),
+                taskAndTaskIdDTO.getInputDTO().getWebPageVisitSize()));
     }
 }

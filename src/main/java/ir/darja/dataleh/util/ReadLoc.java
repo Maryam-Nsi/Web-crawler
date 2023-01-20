@@ -1,7 +1,9 @@
 package ir.darja.dataleh.util;
 
 import org.springframework.stereotype.Component;
-import org.w3c.dom.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -10,10 +12,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ReadLoc {
-    public ArrayList<String> readData(String hostname) throws ParserConfigurationException, SAXException, IOException {
+    public List<String> readData(String hostname, int size) throws ParserConfigurationException, SAXException, IOException {
         //Get Document Builder
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -35,8 +38,10 @@ public class ReadLoc {
         ArrayList<String> urls = new ArrayList<>();
         for (int temp = 0; temp < nList.getLength(); temp++) {
             Node node = nList.item(temp);
-            if (node.getNodeType() == Node.ELEMENT_NODE)
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
                 urls.add(node.getTextContent());
+                if (urls.size() == size) return urls;
+            }
         }
 
         //This function is called recursively
