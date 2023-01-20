@@ -16,6 +16,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import crawlerIcon from './icons/crawler.png'
+import SendIdPop from './SendIdPop'
 const solutions = [
     {
         name: 'تحلیل داده ها',
@@ -120,6 +121,9 @@ export default function Header() {
                         </a>
                         <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                             نحوه کار با سامانه
+                        </a>
+                        <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                            پیگیری کد رهگیری
                         </a>
                         <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                             درباره ما

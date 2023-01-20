@@ -1,7 +1,7 @@
 import {  useState } from "react"
 // import { useAlert } from 'react-alert'
 import {useAxios} from './hooks/useAxios'
-import IdPop from "./IdPop";
+import GetIdPop from "./GetIdPop";
 export default function Form() {
     const [hostName , setHostName ] = useState("");
     const [uriStartRegex , setUriStartRegex]= useState("");
@@ -39,16 +39,18 @@ export default function Form() {
 
     }
     const prop = error ? {
-        open : true ,
+        openModal : true ,
         data : data
 
 
     } : {
-        open : false
+        openModal : false,
+        data : null
     }
     return (
         <div className="bg-vividskyblue">
-            {data ? <IdPop {...prop}  /> :
+            {/* {data ? <IdPop {...prop}  /> : null } */}
+            {true ? <GetIdPop {...prop}  /> : null }
             <div className="bg-vividskyblue pb-10 pt-16 m-auto h-3/4 w-1/2 md:col-span-2 md:mt-0">
                 <h3 className="text-center text-3xl font-medium leading-6 text-gray-900">فرم درخواست خزش</h3>
                 <p className="text-center mt-4 text-sm text-gray-600">برای انجام خزش کامل بر روی دامنه مورد نظر خود فرم زیر را کامل کنید</p>
@@ -155,7 +157,7 @@ export default function Form() {
                         </div>
                     </div>
                 </form>
-            </div>}
+            </div>
             </div>
     )
 }
