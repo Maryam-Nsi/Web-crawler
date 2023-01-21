@@ -12,27 +12,23 @@ export const useAxios = (url , method = 'GET') => {
     setOptions({
       method:"POST",
       headers:{
-        "Content-Type": "application/json"
-        // "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
+        'Content-Type': 'application/json',
+        'accept':'application/json'
       },
+      mode : "no-cors",
       body: JSON.stringify(Pdata),
+      // body: Pdata,
     })
   }
 
 
   useEffect(() => {
-    const controller = new AbortController()
 
     const fetchData = async (fetchOptions) => {
       setIsPending(true)
 
-      const headers = {
-        "Content-Type": "application/json",
-        // "Authorization": `Token ${JSON.parse(localStorage.getItem("token"))}`
-      }
-
       try {
-        const res = await fetch(url, {...fetchOptions, headers: headers , signal: controller.signal })
+        const res = await fetch(url, fetchOptions)
         const jres = await res.json()
         console.log(jres)
         setIsPending(false)
@@ -53,9 +49,6 @@ export const useAxios = (url , method = 'GET') => {
     }
     if ((method === "POST" || method === 'PUT') && options){
       fetchData(options)
-    }
-    return () => {
-      controller.abort()
     }
 
   }, [method, options, url])

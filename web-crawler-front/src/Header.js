@@ -1,5 +1,6 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
+// import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import {
     ArrowPathIcon,
     Bars3Icon,
@@ -49,6 +50,12 @@ function classNames(...classes) {
 }
 
 export default function Header() {
+    const [openSendIdProp , setOpenSendIdProp] = useState(false)
+    const sendId = ()=>{
+        console.log("click")
+        setOpenSendIdProp(true)
+
+    }
     return (
         <Popover className="relative bg-isabelline">
             <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -122,9 +129,10 @@ export default function Header() {
                         <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                             نحوه کار با سامانه
                         </a>
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                        <a onClick={sendId}  href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                             پیگیری کد رهگیری
                         </a>
+                        {openSendIdProp ? <SendIdPop /> : null}
                         <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                             درباره ما
                         </a>
