@@ -14,3 +14,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.signinstyle .ant-modal-content{
+  padding: 0px;
+  background-color: transparent;
+}

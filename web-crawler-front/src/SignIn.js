@@ -3,15 +3,7 @@ import crawlerIcon from './icons/crawler.jpeg'
 export default function SignIn() {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
-      <div className="bg-isabelline flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="bg-isabelline flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 rounded-3xl">
         <div className="w-full max-w-md space-y-8">
           <div>
             <img
@@ -24,9 +16,9 @@ export default function SignIn() {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
 
-              <a href="#" className="font-medium text-blackolive hover:text-blackolive">
+              <button href="#" className="font-medium text-blackolive hover:text-blackolive">
 
-              </a>
+              </button>
             </p>
           </div>
           <form className="mt-8 space-y-6" action="#" method="POST">
@@ -76,9 +68,9 @@ export default function SignIn() {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-blackolive hover:text-blackolive">
+                <button href="#" className="font-medium text-blackolive hover:text-blackolive">
                   Forgot your password?
-                </a>
+                </button>
               </div>
             </div>
 
