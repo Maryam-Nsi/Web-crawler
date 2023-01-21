@@ -15,7 +15,7 @@ code {
     monospace;
 }
 
-.signinstyle .ant-modal-content{
+.padstyle .ant-modal-content{
   padding: 0px;
   background-color: transparent;
 }

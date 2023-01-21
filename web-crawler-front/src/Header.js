@@ -11,8 +11,12 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import SignIn from './SignIn';
+import SignUp from './SignUp';
+import AboutUs from './AboutUs';
+import Communication  from './Communication';
 import crawlerIcon from './icons/crawler.png'
-import SendIdPop from './SendIdPop'
+import Howtowork from './Howtowork';
+import SendId from './SendId';
 const solutions = [
     {
         name: 'تحلیل داده ها',
@@ -49,6 +53,8 @@ export default function Header() {
     const [darbare, setdarbare] = useState(false);
     const [ertebat, setertebat] = useState(false);
     const [vorood, setvorood] = useState(false);
+    const [sabtenam, setsabtenam] = useState(false);
+    const [peygiri, setpeygiri] = useState(false);
     const showModal = (who) => {
         switch (who){
             case "nahve":
@@ -62,6 +68,12 @@ export default function Header() {
                 break
             case "vorood":
                 setvorood(true)
+                break
+            case "sabtenam":
+                setsabtenam(true)
+                break
+            case "peygiri":
+                setpeygiri(true)
                 break
             default:
                 console.log("ERROR!!!!!!")
@@ -82,17 +94,17 @@ export default function Header() {
             case "vorood":
                 setvorood(false)
                 break
+            case "sabtenam":
+                setsabtenam(false)
+                break
+            case "peygiri":
+                setpeygiri(false)
+                break
             default:
                 console.log("ERROR!!!!!!")
 
         }
     };
-    const [openSendIdProp , setOpenSendIdProp] = useState(false)
-    const sendId = ()=>{
-        console.log("click")
-        setOpenSendIdProp(true)
-
-    }
     return (
         <div>
             <Popover className="relative bg-isabelline">
@@ -171,11 +183,9 @@ export default function Header() {
                         <button onClick={() => showModal("nahve")} className="text-base font-medium text-gray-500 hover:text-gray-900">
                             نحوه کار با سامانه
                         </button>
-                        <button onClick={sendId}  href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                        <button  onClick={() => showModal("peygiri")} className="text-base font-medium text-gray-500 hover:text-gray-900">
                             پیگیری کد رهگیری
                         </button>
-                        {openSendIdProp ? <SendIdPop /> : null}
-
 
                     </Popover.Group>
                     
@@ -184,7 +194,7 @@ export default function Header() {
                             ورود
                         </button>
                         <button
-                            href="#"
+                            onClick={() => showModal("sabtenam")}
                             className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blackolive px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blackolive"
                         >
                             ثبت نام
@@ -235,32 +245,44 @@ export default function Header() {
             </Transition>
             </Popover>
 
-            {<Modal title="Basic Modal" open={nahve} onCancel={() => handleCancel("nahve")}
+            {<Modal open={nahve} onCancel={() => handleCancel("nahve")}
             footer={[]}
             >
-                <p>nahve</p>
+                <Howtowork />
             </Modal>}
 
-            {<Modal title="Basic Modal" open={ertebat} onCancel={() => handleCancel("ertebat")}
+            {<Modal open={ertebat} onCancel={() => handleCancel("ertebat")}
             footer={[]}
             >
-                <p>ertebat</p>
+                <Communication />
             </Modal>}
 
-             {<Modal title="Basic Modal" open={darbare} onCancel={() => handleCancel("darbare")}
+             {<Modal open={darbare} onCancel={() => handleCancel("darbare")}
             footer={[]}
             >
-                <p>darbare</p>
+                <AboutUs />
             </Modal>}
 
-            {<Modal title="" open={vorood} onCancel={() => handleCancel("vorood")}
+            {<Modal open={vorood} onCancel={() => handleCancel("vorood")}
             footer={[]}
-            className="signinstyle"
+            className="padstyle"
             >
                 <SignIn />
             </Modal>}
 
-            
+            {<Modal open={sabtenam} onCancel={() => handleCancel("sabtenam")}
+            footer={[]}
+            className="padstyle"
+            >
+                <SignUp />
+            </Modal>}
+
+            {<Modal open={peygiri} onCancel={() => handleCancel("peygiri")}
+            footer={[]}
+            className="padstyle"
+            >
+                <SendId />
+            </Modal>}
         </div>
         
     )
