@@ -14,8 +14,9 @@ import {
     XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import crawlerIcon from './icons/crawler.jpeg'
 import SignIn from './SignIn';
+import crawlerIcon from './icons/crawler.png'
+import SendIdPop from './SendIdPop'
 const solutions = [
     {
         name: 'تحلیل داده ها',
@@ -42,28 +43,6 @@ const solutions = [
         href: '#',
         icon: ArrowPathIcon,
     },
-]
-
-const resources = [
-    {
-        name: 'Help Center',
-        description: 'Get all of your questions answered in our forums or contact support.',
-        href: '#',
-        icon: LifebuoyIcon,
-    },
-    {
-        name: 'Guides',
-        description: 'Learn how to maximize our platform to get the most out of it.',
-        href: '#',
-        icon: BookmarkSquareIcon,
-    },
-    {
-        name: 'Events',
-        description: 'See what meet-ups and other events we might be planning near you.',
-        href: '#',
-        icon: CalendarIcon,
-    },
-    { name: 'Security', description: 'Understand how we take your privacy seriously.', href: '#', icon: ShieldCheckIcon },
 ]
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -116,7 +95,7 @@ export default function Header() {
         <div>
             <Popover className="relative bg-isabelline">
             <div className="mx-auto max-w-7xl px-4 sm:px-6">
-                <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+                <div className="flex items-center justify-between border-b-2 border-blackolive‍ py-6 md:justify-start md:space-x-10">
                     <div className="flex justify-start lg:w-0 lg:flex-1">
                         <button href="#">
                             <span className="sr-only">Web crawler</span>
@@ -126,12 +105,6 @@ export default function Header() {
                                 alt=""
                             />
                         </button>
-                    </div>
-                    <div className="-my-2 -mr-2 md:hidden">
-                        <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blackolive">
-                            <span className="sr-only">Open menu</span>
-                            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                        </Popover.Button>
                     </div>
                     <Popover.Group as="nav" className="hidden space-x-10 md:flex">
                         <Popover className="relative">
@@ -187,6 +160,7 @@ export default function Header() {
                         </Popover>
 
                         <button onClick={() => showModal("darbare")} className="text-base font-medium text-gray-500 hover:text-gray-900">
+
                             درباره ما
                         </button>
                         <button onClick={() => showModal("ertebat")} className="text-base font-medium text-gray-500 hover:text-gray-900">
@@ -234,12 +208,6 @@ export default function Header() {
                                         alt="Your Company"
                                     />
                                 </div>
-                                <div className="-mr-2">
-                                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blackolive">
-                                        <span className="sr-only">Close menu</span>
-                                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                                    </Popover.Button>
-                                </div>
                             </div>
                             <div className="mt-6">
                                 <nav className="grid gap-y-8">
@@ -256,40 +224,7 @@ export default function Header() {
                                 </nav>
                             </div>
                         </div>
-                        <div className="space-y-6 py-6 px-5">
-                            <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                                <button href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                    Pricing
-                                </button>
 
-                                <button href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                    Docs
-                                </button>
-                                {resources.map((item) => (
-                                    <button
-                                        key={item.name}
-                                        href={item.href}
-                                        className="text-base font-medium text-gray-900 hover:text-gray-700"
-                                    >
-                                        {item.name}
-                                    </button>
-                                ))}
-                            </div>
-                            <div>
-                                <button
-                                    href="#"
-                                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-blackolive px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blackolive"
-                                >
-                                    Sign up
-                                </button>
-                                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                                    Existing customer?{' '}
-                                    <button href="#" className="text-blackolive hover:text-blackolive">
-                                        Sign in
-                                    </button>
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </Popover.Panel>
             </Transition>

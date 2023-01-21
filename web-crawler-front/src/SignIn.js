@@ -1,5 +1,5 @@
 import { LockClosedIcon } from '@heroicons/react/20/solid'
-import crawlerIcon from './icons/crawler.jpeg'
+import crawlerIcon from './icons/crawler.png'
 export default function SignIn() {
   return (
     <>
@@ -63,13 +63,13 @@ export default function SignIn() {
                   className="h-4 w-4 rounded border-gray-300 text-blackolive focus:ring-blackolive"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                  Remember me
+                  مرا به یاد داشته باش
                 </label>
               </div>
 
               <div className="text-sm">
                 <button href="#" className="font-medium text-blackolive hover:text-blackolive">
-                  Forgot your password?
+                  فراموشی رمز عبور؟
                 </button>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function SignIn() {
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon className="h-5 w-5 text-blackolive group-hover:text-blackolive" aria-hidden="true" />
                 </span>
-                Sign in
+                ورود
               </button>
             </div>
           </form>
