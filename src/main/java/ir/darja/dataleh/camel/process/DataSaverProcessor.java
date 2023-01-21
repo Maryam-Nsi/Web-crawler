@@ -1,7 +1,7 @@
 package ir.darja.dataleh.camel.process;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.darja.dataleh.dao.RecordRepository;
+import ir.darja.dataleh.logic.HashMapConverter;
 import ir.darja.dataleh.model.entity.Record;
 import lombok.RequiredArgsConstructor;
 import org.apache.camel.Exchange;
@@ -16,12 +16,12 @@ import static ir.darja.dataleh.camel.process.URLInjectorProcessor.TASK_ID_HEADER
 @RequiredArgsConstructor
 public class DataSaverProcessor implements Processor {
     private final RecordRepository recordRepository;
-    private final ObjectMapper mapper;
+    private final HashMapConverter converter;
 
     @Override
-    public void process(Exchange exchange) throws Exception {
+    public void process(Exchange exchange) {
         String taskId = exchange.getMessage().getHeader(TASK_ID_HEADER_KEY, String.class);
         Map<String, String> data = exchange.getMessage().getBody(Map.class);
-        recordRepository.save(Record.builder().taskId(taskId).data(mapper.writeValueAsString(data)).build());
+        recordRepository.save(Record.builder().taskId(taskId).data(converter.convertToDatabaseColumn(data)).build());
     }
 }

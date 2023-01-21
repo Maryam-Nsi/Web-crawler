@@ -7,12 +7,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import ir.darja.dataleh.logic.RecordRepositoryHelper;
 import ir.darja.dataleh.logic.URLInjectionRouteEnabler;
 import ir.darja.dataleh.model.input.TaskConfigurationInputDTO;
+import ir.darja.dataleh.model.output.RecordsOutputDTO;
 import ir.darja.dataleh.model.output.TaskIdOutputDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -35,7 +35,7 @@ public class TaskController {
     @Operation(summary = "You can get your task result with its id and pagination.",
             responses = {@ApiResponse(description = "It contains list of records in json type.")})
     @GetMapping("/")
-    public List<String> get(@RequestParam String taskId, @RequestParam int pageNumber, @RequestParam int pageSize) {
+    public RecordsOutputDTO get(@RequestParam String taskId, @RequestParam int pageNumber, @RequestParam int pageSize) {
         return recordRepositoryHelper.getRecords(taskId, pageNumber, pageSize);
     }
 }
