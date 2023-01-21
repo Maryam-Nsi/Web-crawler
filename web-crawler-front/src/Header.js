@@ -17,6 +17,8 @@ import Communication  from './Communication';
 import crawlerIcon from './icons/crawler.png'
 import Howtowork from './Howtowork';
 import SendId from './SendId';
+import Form from './Form';
+import ResultModal from './ResultModal';
 const solutions = [
     {
         name: 'تحلیل داده ها',
@@ -55,6 +57,8 @@ export default function Header() {
     const [vorood, setvorood] = useState(false);
     const [sabtenam, setsabtenam] = useState(false);
     const [peygiri, setpeygiri] = useState(false);
+    const [ask, setask] = useState(false);
+    const [res, setres] = useState(false);
     const showModal = (who) => {
         switch (who){
             case "nahve":
@@ -74,6 +78,12 @@ export default function Header() {
                 break
             case "peygiri":
                 setpeygiri(true)
+                break
+            case "ask":
+                setask(true)
+                break
+            case "res":
+                setres(true)
                 break
             default:
                 console.log("ERROR!!!!!!")
@@ -100,6 +110,12 @@ export default function Header() {
             case "peygiri":
                 setpeygiri(false)
                 break
+            case "ask":
+                setask(false)
+                break
+            case "res":
+                setres(false)
+                break
             default:
                 console.log("ERROR!!!!!!")
 
@@ -117,6 +133,7 @@ export default function Header() {
                                 className="h-8 w-auto sm:h-10"
                                 src={crawlerIcon}
                                 alt=""
+                                onClick={() => showModal("res")}
                             />
                         </button>
                     </div>
@@ -186,7 +203,6 @@ export default function Header() {
                         <button  onClick={() => showModal("peygiri")} className="text-base font-medium text-gray-500 hover:text-gray-900">
                             پیگیری کد رهگیری
                         </button>
-
                     </Popover.Group>
                     
                     <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
@@ -244,7 +260,7 @@ export default function Header() {
                 </Popover.Panel>
             </Transition>
             </Popover>
-
+            <Form ask={ask} showModal={showModal} handleCancel={handleCancel} />
             {<Modal open={nahve} onCancel={() => handleCancel("nahve")}
             footer={[]}
             >
@@ -283,7 +299,7 @@ export default function Header() {
             >
                 <SendId />
             </Modal>}
+            <ResultModal res={res} handleCancel={handleCancel} />
         </div>
-        
     )
 }
