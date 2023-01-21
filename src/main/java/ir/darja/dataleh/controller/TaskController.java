@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1")
-@OpenAPIDefinition(info = @Info(title = "This tool can integrate your data frome hole network.", version = "0.0.1"))
+@OpenAPIDefinition(info = @Info(title = "This tool can integrate your data from hole network.", version = "0.0.1"))
 @RequiredArgsConstructor
 public class TaskController {
     private final URLInjectionRouteEnabler urlInjectionRouteEnabler;
