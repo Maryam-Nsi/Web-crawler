@@ -1,21 +1,18 @@
-import { Fragment } from 'react'
+import { Modal } from 'antd';
+import { Fragment, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
+// import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import {
     ArrowPathIcon,
-    Bars3Icon,
-    BookmarkSquareIcon,
-    CalendarIcon,
     ChartBarIcon,
     CursorArrowRaysIcon,
-    LifebuoyIcon,
-    PhoneIcon,
-    PlayIcon,
     ShieldCheckIcon,
     Squares2X2Icon,
-    XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-
+import SignIn from './SignIn';
+import crawlerIcon from './icons/crawler.png'
+import SendIdPop from './SendIdPop'
 const solutions = [
     {
         name: 'تحلیل داده ها',
@@ -43,61 +40,73 @@ const solutions = [
         icon: ArrowPathIcon,
     },
 ]
-const callsToAction = [
-    { name: 'Watch Demo', href: '#', icon: PlayIcon },
-    { name: 'Contact Sales', href: '#', icon: PhoneIcon },
-]
-const resources = [
-    {
-        name: 'Help Center',
-        description: 'Get all of your questions answered in our forums or contact support.',
-        href: '#',
-        icon: LifebuoyIcon,
-    },
-    {
-        name: 'Guides',
-        description: 'Learn how to maximize our platform to get the most out of it.',
-        href: '#',
-        icon: BookmarkSquareIcon,
-    },
-    {
-        name: 'Events',
-        description: 'See what meet-ups and other events we might be planning near you.',
-        href: '#',
-        icon: CalendarIcon,
-    },
-    { name: 'Security', description: 'Understand how we take your privacy seriously.', href: '#', icon: ShieldCheckIcon },
-]
-const recentPosts = [
-    { id: 1, name: 'Boost your conversion rate', href: '#' },
-    { id: 2, name: 'How to use search engine optimization to drive traffic to your site', href: '#' },
-    { id: 3, name: 'Improve your customer experience', href: '#' },
-]
-
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function Header() {
+    const [nahve, setnahve] = useState(false);
+    const [darbare, setdarbare] = useState(false);
+    const [ertebat, setertebat] = useState(false);
+    const [vorood, setvorood] = useState(false);
+    const showModal = (who) => {
+        switch (who){
+            case "nahve":
+                setnahve(true)
+                break
+            case "darbare":
+                setdarbare(true)
+                break
+            case "ertebat":
+                setertebat(true)
+                break
+            case "vorood":
+                setvorood(true)
+                break
+            default:
+                console.log("ERROR!!!!!!")
+
+        }
+    };
+    const handleCancel = (who) => {
+        switch (who){
+            case "nahve":
+                setnahve(false)
+                break
+            case "darbare":
+                setdarbare(false)
+                break
+            case "ertebat":
+                setertebat(false)
+                break
+            case "vorood":
+                setvorood(false)
+                break
+            default:
+                console.log("ERROR!!!!!!")
+
+        }
+    };
+    const [openSendIdProp , setOpenSendIdProp] = useState(false)
+    const sendId = ()=>{
+        console.log("click")
+        setOpenSendIdProp(true)
+
+    }
     return (
-        <Popover className="relative bg-white">
+        <div>
+            <Popover className="relative bg-isabelline">
             <div className="mx-auto max-w-7xl px-4 sm:px-6">
-                <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+                <div className="flex items-center justify-between border-b-2 border-blackolive‍ py-6 md:justify-start md:space-x-10">
                     <div className="flex justify-start lg:w-0 lg:flex-1">
-                        <a href="#">
-                            <span className="sr-only">Your Company</span>
+                        <button href="#">
+                            <span className="sr-only">Web crawler</span>
                             <img
                                 className="h-8 w-auto sm:h-10"
-                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                src={crawlerIcon}
                                 alt=""
                             />
-                        </a>
-                    </div>
-                    <div className="-my-2 -mr-2 md:hidden">
-                        <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                            <span className="sr-only">Open menu</span>
-                            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                        </Popover.Button>
+                        </button>
                     </div>
                     <Popover.Group as="nav" className="hidden space-x-10 md:flex">
                         <Popover className="relative">
@@ -106,7 +115,7 @@ export default function Header() {
                                     <Popover.Button
                                         className={classNames(
                                             open ? 'text-gray-900' : 'text-gray-500',
-                                            'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                                            'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none'
                                         )}
                                     >
                                         <span>کارکرد ما </span>
@@ -137,25 +146,12 @@ export default function Header() {
                                                             href={item.href}
                                                             className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
                                                         >
-                                                            <item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
+                                                            <item.icon className="h-6 w-6 flex-shrink-0 text-blackolive" aria-hidden="true" />
                                                             <div className="ml-4">
                                                                 <p className="text-base font-medium text-gray-900">{item.name}</p>
                                                                 <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                                             </div>
                                                         </a>
-                                                    ))}
-                                                </div>
-                                                <div className="space-y-6 bg-gray-50 px-5 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8">
-                                                    {callsToAction.map((item) => (
-                                                        <div key={item.name} className="flow-root">
-                                                            <a
-                                                                href={item.href}
-                                                                className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
-                                                            >
-                                                                <item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                                                                <span className="ml-3">{item.name}</span>
-                                                            </a>
-                                                        </div>
                                                     ))}
                                                 </div>
                                             </div>
@@ -165,29 +161,34 @@ export default function Header() {
                             )}
                         </Popover>
 
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                            کمک به ما
-                        </a>
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                            نحوه کار با سامانه
-                        </a>
-                        <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                            درباره ما
-                        </a>
+                        <button onClick={() => showModal("darbare")} className="text-base font-medium text-gray-500 hover:text-gray-900">
 
+                            درباره ما
+                        </button>
+                        <button onClick={() => showModal("ertebat")} className="text-base font-medium text-gray-500 hover:text-gray-900">
+                            راه های ارتباطی
+                        </button>
+                        <button onClick={() => showModal("nahve")} className="text-base font-medium text-gray-500 hover:text-gray-900">
+                            نحوه کار با سامانه
+                        </button>
+                        <button onClick={sendId}  href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                            پیگیری کد رهگیری
+                        </button>
+                        {openSendIdProp ? <SendIdPop /> : null}
 
 
                     </Popover.Group>
+                    
                     <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-                        <a href="#" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                        <button onClick={() => showModal("vorood")} className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
                             ورود
-                        </a>
-                        <a
+                        </button>
+                        <button
                             href="#"
-                            className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                            className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blackolive px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blackolive"
                         >
                             ثبت نام
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -208,15 +209,9 @@ export default function Header() {
                                 <div>
                                     <img
                                         className="h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                        src={crawlerIcon}
                                         alt="Your Company"
                                     />
-                                </div>
-                                <div className="-mr-2">
-                                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                                        <span className="sr-only">Close menu</span>
-                                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                                    </Popover.Button>
                                 </div>
                             </div>
                             <div className="mt-6">
@@ -227,50 +222,46 @@ export default function Header() {
                                             href={item.href}
                                             className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
                                         >
-                                            <item.icon className="h-6 w-6 flex-shrink-0 text-indigo-600" aria-hidden="true" />
+                                            <item.icon className="h-6 w-6 flex-shrink-0 text-blackolive" aria-hidden="true" />
                                             <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
                                         </a>
                                     ))}
                                 </nav>
                             </div>
                         </div>
-                        <div className="space-y-6 py-6 px-5">
-                            <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                                <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                    Pricing
-                                </a>
 
-                                <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                    Docs
-                                </a>
-                                {resources.map((item) => (
-                                    <a
-                                        key={item.name}
-                                        href={item.href}
-                                        className="text-base font-medium text-gray-900 hover:text-gray-700"
-                                    >
-                                        {item.name}
-                                    </a>
-                                ))}
-                            </div>
-                            <div>
-                                <a
-                                    href="#"
-                                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                                >
-                                    Sign up
-                                </a>
-                                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                                    Existing customer?{' '}
-                                    <a href="#" className="text-indigo-600 hover:text-indigo-500">
-                                        Sign in
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </Popover.Panel>
             </Transition>
-        </Popover>
+            </Popover>
+
+            {<Modal title="Basic Modal" open={nahve} onCancel={() => handleCancel("nahve")}
+            footer={[]}
+            >
+                <p>nahve</p>
+            </Modal>}
+
+            {<Modal title="Basic Modal" open={ertebat} onCancel={() => handleCancel("ertebat")}
+            footer={[]}
+            >
+                <p>ertebat</p>
+            </Modal>}
+
+             {<Modal title="Basic Modal" open={darbare} onCancel={() => handleCancel("darbare")}
+            footer={[]}
+            >
+                <p>darbare</p>
+            </Modal>}
+
+            {<Modal title="" open={vorood} onCancel={() => handleCancel("vorood")}
+            footer={[]}
+            className="signinstyle"
+            >
+                <SignIn />
+            </Modal>}
+
+            
+        </div>
+        
     )
 }
