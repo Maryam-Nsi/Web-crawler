@@ -1,18 +1,13 @@
 import { Modal } from 'antd';
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 // import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import {
     ArrowPathIcon,
-    Bars3Icon,
-    BookmarkSquareIcon,
-    CalendarIcon,
     ChartBarIcon,
     CursorArrowRaysIcon,
-    LifebuoyIcon,
     ShieldCheckIcon,
     Squares2X2Icon,
-    XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import SignIn from './SignIn';
@@ -120,7 +115,7 @@ export default function Header() {
                                     <Popover.Button
                                         className={classNames(
                                             open ? 'text-gray-900' : 'text-gray-500',
-                                            'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blackolive focus:ring-offset-2'
+                                            'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none'
                                         )}
                                     >
                                         <span>کارکرد ما </span>
