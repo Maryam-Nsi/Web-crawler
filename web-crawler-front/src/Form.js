@@ -2,8 +2,15 @@ import {  useState } from "react"
 // import { useAlert } from 'react-alert'
 import {useAxios} from './hooks/useAxios'
 import GetIdPop from "./GetIdPop";
+import { CopyOutlined } from '@ant-design/icons';
+import {
+  Button,
+  Input,
+  Tooltip,
+  Modal
+} from 'antd';
 
-export default function Form() {
+export default function Form(props) {
     const [hostName , setHostName ] = useState("");
     const [uriStartRegex , setUriStartRegex]= useState("");
     const [dataSetSize , setDataSetSize] = useState("");
@@ -50,7 +57,8 @@ export default function Form() {
         data : null
     }
     return (
-        <div className="bg-vividskyblue">
+        <>
+            <div className="bg-vividskyblue">
             {/* {data ? <IdPop {...prop}  /> : null } */}
             {true ? <GetIdPop {...prop}  /> : null }
             <div className="bg-vividskyblue pb-10 pt-16 m-auto h-3/4 w-1/2 md:col-span-2 md:mt-0">
@@ -152,6 +160,7 @@ export default function Form() {
                         <div className="bg-isabelline pb-10 px-4 py-3 text-right sm:px-6">
                             <button
                                 type="submit"
+                                onClick={() => props.showModal("ask")}
                                 className="inline-flex justify-center rounded-md border border-transparent bg-blackolive py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blackolive focus:outline-none focus:ring-2 focus:ring-blackolive focus:ring-offset-2"
                             >
                                 ارسال درخواست
@@ -161,5 +170,28 @@ export default function Form() {
                 </form>
             </div>
             </div>
+            
+            <Modal title="درخواست شما با موفقیت ثبت گردید" open={props.ask} onCancel={() => props.handleCancel("ask")}
+            footer={[]}
+            >
+                <Input.Group compact>
+                    <Input
+                        style={{
+                        width: 'calc(100% - 50px)',
+                        pointerEvents: "none"
+                        }}
+                        defaultValue="Task ID is here"
+                    />
+                    <Tooltip title="copy Task ID">
+                        <Button onClick={() => {
+                            navigator.clipboard.writeText("Task Id")
+                            alert("Copied the text: " + "Task id");
+                           }
+                        } icon={<CopyOutlined />} />
+                    </Tooltip>
+                </Input.Group>
+            </Modal>
+        </>
+        
     )
 }

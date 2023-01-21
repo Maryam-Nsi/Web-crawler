@@ -12,7 +12,8 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import SignIn from './SignIn';
 import crawlerIcon from './icons/crawler.png'
-import SendIdPop from './SendIdPop'
+import Form from './Form';
+import ResultModal from './ResultModal';
 const solutions = [
     {
         name: 'تحلیل داده ها',
@@ -49,6 +50,8 @@ export default function Header() {
     const [darbare, setdarbare] = useState(false);
     const [ertebat, setertebat] = useState(false);
     const [vorood, setvorood] = useState(false);
+    const [ask, setask] = useState(false);
+    const [res, setres] = useState(false);
     const showModal = (who) => {
         switch (who){
             case "nahve":
@@ -62,6 +65,12 @@ export default function Header() {
                 break
             case "vorood":
                 setvorood(true)
+                break
+            case "ask":
+                setask(true)
+                break
+            case "res":
+                setres(true)
                 break
             default:
                 console.log("ERROR!!!!!!")
@@ -82,16 +91,19 @@ export default function Header() {
             case "vorood":
                 setvorood(false)
                 break
+            case "ask":
+                setask(false)
+                break
+            case "res":
+                setres(false)
+                break
             default:
                 console.log("ERROR!!!!!!")
 
         }
     };
-    const [openSendIdProp , setOpenSendIdProp] = useState(false)
     const sendId = ()=>{
         console.log("click")
-        setOpenSendIdProp(true)
-
     }
     return (
         <div>
@@ -105,6 +117,7 @@ export default function Header() {
                                 className="h-8 w-auto sm:h-10"
                                 src={crawlerIcon}
                                 alt=""
+                                onClick={() => showModal("res")}
                             />
                         </button>
                     </div>
@@ -174,7 +187,6 @@ export default function Header() {
                         <button onClick={sendId}  href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
                             پیگیری کد رهگیری
                         </button>
-                        {openSendIdProp ? <SendIdPop /> : null}
 
 
                     </Popover.Group>
@@ -235,6 +247,8 @@ export default function Header() {
             </Transition>
             </Popover>
 
+            <Form ask={ask} showModal={showModal} handleCancel={handleCancel} />
+
             {<Modal title="Basic Modal" open={nahve} onCancel={() => handleCancel("nahve")}
             footer={[]}
             >
@@ -260,7 +274,7 @@ export default function Header() {
                 <SignIn />
             </Modal>}
 
-            
+            <ResultModal res={res} handleCancel={handleCancel} />
         </div>
         
     )
