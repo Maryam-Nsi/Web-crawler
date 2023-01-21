@@ -2,6 +2,7 @@ import {  useState } from "react"
 // import { useAlert } from 'react-alert'
 import {useAxios} from './hooks/useAxios'
 import GetIdPop from "./GetIdPop";
+
 export default function Form() {
     const [hostName , setHostName ] = useState("");
     const [uriStartRegex , setUriStartRegex]= useState("");
@@ -32,8 +33,9 @@ export default function Form() {
             "requestPerSecond": requestPerSecond,
             "features": [{"name": features.name, "selector":features.selector}]
         }
-        postData(obj)
-        console.log(obj)
+        const obj2 = {"hostName": "meghdadit", "uriStartRegex": "heif", "dataSetSize": "1","webPageVisitSize": "3", "requestPerSecond": "0.0", "features": [{"name": "Ename", "selector": "#SharedMessage_ContentPlaceHolder1_lblMobileTitle2"}]}
+        postData(obj2)
+        console.log(JSON.stringify(obj2))
         console.log("data",data)
         console.log("error",error)
 

@@ -1,6 +1,7 @@
-import { Fragment, useState } from 'react'
-import { Popover, Transition } from '@headlessui/react'
 import { Modal } from 'antd';
+import { Fragment, useEffect, useState } from 'react'
+import { Popover, Transition } from '@headlessui/react'
+// import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import {
     ArrowPathIcon,
     Bars3Icon,
@@ -91,6 +92,12 @@ export default function Header() {
 
         }
     };
+    const [openSendIdProp , setOpenSendIdProp] = useState(false)
+    const sendId = ()=>{
+        console.log("click")
+        setOpenSendIdProp(true)
+
+    }
     return (
         <div>
             <Popover className="relative bg-isabelline">
@@ -169,7 +176,10 @@ export default function Header() {
                         <button onClick={() => showModal("nahve")} className="text-base font-medium text-gray-500 hover:text-gray-900">
                             نحوه کار با سامانه
                         </button>
-
+                        <button onClick={sendId}  href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                            پیگیری کد رهگیری
+                        </button>
+                        {openSendIdProp ? <SendIdPop /> : null}
 
 
                     </Popover.Group>
