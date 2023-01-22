@@ -10,6 +10,9 @@ export default function SignIn() {
   const sendForm = (e)=>{
 
     e.preventDefault()
+    console.log(identifier)
+    console.log(pagesize)
+    console.log(pagenumber)
     const url =`http://localhost:8080?taskId=${identifier}&pageNumber=${pagenumber}&pageSize=${pagesize}`
     setData (axiosFunction(url , 'GET' , null))
 
@@ -42,6 +45,7 @@ export default function SignIn() {
                   required
                   className="m-1 relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blackolive focus:outline-none focus:ring-blackolive sm:text-sm"
                   placeholder="ID"
+                  onChange={e=>setIdentifier(e.target.value)}
                 />
               </div>
               <div>
@@ -55,6 +59,7 @@ export default function SignIn() {
                   required
                   className="m-1 relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blackolive focus:outline-none focus:ring-blackolive sm:text-sm"
                   placeholder="Page Size / اندازه صفحه"
+                  onChange={e=>setPagesize(e.target.value)}
                 />
               </div>
               <div>
@@ -68,6 +73,7 @@ export default function SignIn() {
                   required
                   className="m-1 relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blackolive focus:outline-none focus:ring-blackolive sm:text-sm"
                   placeholder="Page Number / شماره صفحه"
+                  onChange={e=>setPagenumber(e.target.value)}
                 />
               </div>
             </div>

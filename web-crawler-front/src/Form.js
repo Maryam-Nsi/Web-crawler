@@ -27,14 +27,14 @@ export default function Form(props) {
     // const { data, isPending, error , postData} = useFetch(url , 'POST')
 
     const sendForm =(e)=>{
-        e.preventDefault();
-        // console.log("hi")
-        // console.log(hostName);
-        // console.log(uriStartRegex);
-        // console.log(dataSetSize);
-        // console.log(webPageVisitSize);
-        // console.log(requestPerSecond);
-        // console.log(features)
+
+        console.log("hi")
+        console.log(hostName);
+        console.log(uriStartRegex);
+        console.log(dataSetSize);
+        console.log(webPageVisitSize);
+        console.log(requestPerSecond);
+        console.log(features)
         const obj = {
             "hostName": hostName,
             "uriStartRegex": uriStartRegex,
@@ -47,6 +47,7 @@ export default function Form(props) {
 
         setData (axiosFunction(url , 'POST' , obj2))
         console.log("data",data)
+        e.preventDefault();
 
 
     }
@@ -63,11 +64,11 @@ export default function Form(props) {
         <>
             <div className="bg-vividskyblue">
             {/* {data ? <IdPop {...prop}  /> : null } */}
-            {true ? <GetIdPop {...prop}  /> : null }
+            {/* {true ? <GetIdPop {...prop}  /> : null } */}
             <div className="bg-vividskyblue pb-10 pt-16 m-auto h-3/4 w-1/2 md:col-span-2 md:mt-0">
                 <h3 className="text-center text-3xl font-medium leading-6 text-gray-900">فرم درخواست خزش</h3>
                 <p className="text-center mt-4 text-sm text-gray-900">.برای انجام خزش کامل بر روی دامنه مورد نظر خود، فرم زیر را کامل کنید</p>
-                <form method="post" onSubmit={sendForm}>
+                <form  onSubmit={sendForm}>
                     <div className=" bg-isabelline mt-10 pt-10 overflow-hidden shadow sm:rounded-md">
                         <div className="bg-isabelline px-4 py-5 sm:p-6">
                             <div className="grid grid-cols-6 gap-6">
@@ -77,9 +78,10 @@ export default function Form(props) {
                                     </label>
                                     <input
                                         type="text"
+
                                         name="host-name"
                                         id="host-name"
-                                        onChange={setHostName}
+                                        onChange={e=>setHostName(e.target.value)}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
@@ -92,7 +94,7 @@ export default function Form(props) {
                                         type="text"
                                         name="uri_start"
                                         id="uri_start"
-                                        onChange={setUriStartRegex}
+                                        onChange={e=>setUriStartRegex(e.target.value)}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
@@ -104,7 +106,7 @@ export default function Form(props) {
                                         type="number"
                                         name="dataset_size"
                                         id="dataset_size"
-                                        onChange={setDataSetSize}
+                                        onChange={e=>setDataSetSize(e.target.value)}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
@@ -116,7 +118,7 @@ export default function Form(props) {
                                         type="number"
                                         name="web_page_visit_size"
                                         id="web_page_visit_size"
-                                        onChange={setWebPageVisitSize}
+                                        onChange={e=>setWebPageVisitSize(e.target.value)}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
@@ -128,7 +130,7 @@ export default function Form(props) {
                                         type="number"
                                         name="request_per_second"
                                         id="request_per_second"
-                                        onChange={setRequestPerSecond}
+                                        onChange={e=>setRequestPerSecond(e.target.value)}
                                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
