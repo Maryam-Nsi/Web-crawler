@@ -19,7 +19,7 @@ export default function SignIn(props) {
     console.log(pagenumber)
     const url =`http://localhost:8080/v1/?taskId=${identifier}&pageNumber=${pagenumber}&pageSize=${pagesize}`
     setData (await axiosFunction(url , 'GET' , null))
-    console.log(data)
+    // console.log(data)
 
   }
   return (
@@ -102,7 +102,7 @@ export default function SignIn(props) {
         </div>
       </div>
 
-      <ResultModal res={props.res} handleCancel={props.handleCancel} data={data} />
+      {data && <ResultModal res={props.res} handleCancel={props.handleCancel} data={data} />}
     </>
   )
 }

@@ -8,6 +8,7 @@ export default function Form(props) {
       var obj = {title: i,dataIndex: i,key: i}
       return obj        
     })
+    console.log(props.data)
     return (
         <>
             {<Modal title="Results" open={props.res} onCancel={() => props.handleCancel("res")}
