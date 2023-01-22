@@ -26,6 +26,7 @@ public class TaskController {
     @Operation(summary = "You can start your data set creation task based on your configuration input.",
             responses = {@ApiResponse(description = "It contains a task id. You can follow your task with that.")})
     @PostMapping("/")
+    @CrossOrigin
     public TaskIdOutputDTO start(@RequestBody TaskConfigurationInputDTO taskConfigurationInputDTO) throws IOException {
         UUID id = UUID.randomUUID();
         urlInjectionRouteEnabler.enable(id, taskConfigurationInputDTO);
@@ -35,6 +36,7 @@ public class TaskController {
     @Operation(summary = "You can get your task result with its id and pagination.",
             responses = {@ApiResponse(description = "It contains list of records in json type.")})
     @GetMapping("/")
+    @CrossOrigin
     public RecordsOutputDTO get(@RequestParam String taskId, @RequestParam int pageNumber, @RequestParam int pageSize) {
         return recordRepositoryHelper.getRecords(taskId, pageNumber, pageSize);
     }
