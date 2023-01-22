@@ -87,7 +87,7 @@ export default function Form(props) {
 
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="uri-start" className="block text-sm font-medium text-gray-700 text-right">
-                                        آدرس سایت مورد نظر
+                                        پیشوند آدرس ها
                                     </label>
                                     <input
                                         type="text"
