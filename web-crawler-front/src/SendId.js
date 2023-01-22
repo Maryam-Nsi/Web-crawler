@@ -2,11 +2,15 @@ import { LockClosedIcon } from '@heroicons/react/20/solid'
 import crawlerIcon from './icons/crawler.png'
 import { useState } from 'react'
 import { axiosFunction } from './hooks/axiosFunction'
-export default function SignIn() {
+import ResultModal from './ResultModal';
+export default function SignIn(props) {
   const [identifier , setIdentifier] = useState("")
   const [pagesize , setPagesize] = useState("");
   const [pagenumber , setPagenumber] = useState("");
   const [data , setData] = useState("");
+  // 
+    
+  // 
   const sendForm = async (e)=>{
 
     e.preventDefault()
@@ -82,6 +86,10 @@ export default function SignIn() {
             <div>
               <button
                 type="submit"
+                onClick={() => {
+                  props.showModal("res")
+                  // props.handleCancel("peygiri")
+                }}
                 className="group relative flex w-full justify-center rounded-md border border-transparent bg-blackolive py-2 px-4 text-sm font-medium text-white hover:bg-blackolive focus:outline-none focus:ring-2 focus:ring-blackolive focus:ring-offset-2"
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -93,6 +101,8 @@ export default function SignIn() {
           </form>
         </div>
       </div>
+
+      <ResultModal res={props.res} handleCancel={props.handleCancel} data={data} />
     </>
   )
 }
