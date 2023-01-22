@@ -7,14 +7,15 @@ export default function SignIn() {
   const [pagesize , setPagesize] = useState("");
   const [pagenumber , setPagenumber] = useState("");
   const [data , setData] = useState("");
-  const sendForm = (e)=>{
+  const sendForm = async (e)=>{
 
     e.preventDefault()
     console.log(identifier)
     console.log(pagesize)
     console.log(pagenumber)
-    const url =`http://localhost:8080?taskId=${identifier}&pageNumber=${pagenumber}&pageSize=${pagesize}`
-    setData (axiosFunction(url , 'GET' , null))
+    const url =`http://localhost:8080/v1/?taskId=${identifier}&pageNumber=${pagenumber}&pageSize=${pagesize}`
+    setData (await axiosFunction(url , 'GET' , null))
+    console.log(data)
 
   }
   return (
