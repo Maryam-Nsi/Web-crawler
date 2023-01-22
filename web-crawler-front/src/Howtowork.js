@@ -13,13 +13,13 @@ const Howtowork = () => (
         </div>
         <div className="sm:text-Right" dir='rtl'>
             <Timeline>
-              <Timeline.Item>آدرس سایت مورد نظر: </Timeline.Item>
-              <Timeline.Item>دامنه سایت: </Timeline.Item>
-              <Timeline.Item>تعداد صفحات برای انجام خزش: </Timeline.Item>
-              <Timeline.Item>میزان دیتای موردنظر: </Timeline.Item>
-              <Timeline.Item>نام ویژگی: </Timeline.Item>
-              <Timeline.Item>انتخابگر ویژگی: </Timeline.Item>
-              <Timeline.Item>تعداد درخواست ارسالی در ثانیه: </Timeline.Item>
+              <Timeline.Item>پیشوند آدرس ها: آدرس سایت مورد نظر با چه URL شروع می شود.</Timeline.Item>
+              <Timeline.Item>دامنه سایت: به عنوان مثال meghdadit</Timeline.Item>
+              <Timeline.Item>تعداد صفحات برای انجام خزش: تا چند صفحه از صفحات موجود را بررسی کند.</Timeline.Item>
+              <Timeline.Item>میزان دیتای موردنظر: اندازه داده های نهایی</Timeline.Item>
+              <Timeline.Item>نام ویژگی: این نام ستون های جدول نهایی را مشخص می کند.</Timeline.Item>
+              <Timeline.Item>انتخابگر ویژگی: css selector را تعیین می کند.</Timeline.Item>
+              <Timeline.Item>تعداد درخواست ارسالی در ثانیه: در هر ثانیه به سایت مورد نظر چه تعداد درخواست ارسال کند.</Timeline.Item>
             </Timeline>
         </div>
         <hr></hr>
@@ -31,9 +31,9 @@ const Howtowork = () => (
         </div>
         <div className="sm:text-Right" dir='rtl'>
             <Timeline>
-              <Timeline.Item>ID: </Timeline.Item>
-              <Timeline.Item>شماره صفحه: </Timeline.Item>
-              <Timeline.Item>انداره صفحه: </Timeline.Item>
+              <Timeline.Item>ID: رشته ای ااز ارسال درخواست  پس از پر کردن فرم نمایش داده می شود.</Timeline.Item>
+              <Timeline.Item>شماره صفحه: تعیین میکند که چه بخشی از داده ها نمایش داده شود.</Timeline.Item>
+              <Timeline.Item>انداره صفحه: حجم داده درخواستی و میزان آن را در هرصفحه مشخص میکند.</Timeline.Item>
             </Timeline>
         </div>
       </div>

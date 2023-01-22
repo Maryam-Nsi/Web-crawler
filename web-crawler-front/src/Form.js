@@ -21,7 +21,7 @@ export default function Form(props) {
         name :"",
         selector :""
     })
-    const [data , setData] = useState(null)
+    const [data , setdata] = useState(null)
     // const alert = useAlert()
     const url = "http://localhost:8080/"
     // const { data, isPending, error , postData} = useFetch(url , 'POST')
@@ -45,9 +45,9 @@ export default function Form(props) {
         }
         const obj2 = {"hostName": "meghdadit", "uriStartRegex": "heif", "dataSetSize": "1","webPageVisitSize": "3", "requestPerSecond": "0.0", "features": [{"name": "Ename", "selector": "#SharedMessage_ContentPlaceHolder1_lblMobileTitle2"}]}
 
-        setData (axiosFunction(url , 'POST' , obj2))
+        setdata(axiosFunction(url , 'POST' , obj2))
+
         console.log("data",data)
-        e.preventDefault();
 
 
     }
@@ -88,7 +88,7 @@ export default function Form(props) {
 
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="uri-start" className="block text-sm font-medium text-gray-700 text-right">
-                                        آدرس سایت مورد نظر
+                                        پیشوند آدرس ها
                                     </label>
                                     <input
                                         type="text"
