@@ -1,7 +1,4 @@
 import {  useState } from "react"
-// import { useAlert } from 'react-alert'
-import {useFetch} from './hooks/useFetch'
-import GetIdPop from "./GetIdPop";
 import { axiosFunction } from "./hooks/axiosFunction";
 import { CopyOutlined } from '@ant-design/icons';
 import {
@@ -23,11 +20,11 @@ export default function Form(props) {
     })
     const [data , setdata] = useState(null)
     // const alert = useAlert()
-    const url = "http://localhost:8080/"
+    const url = "http://localhost:8080/v1/"
     // const { data, isPending, error , postData} = useFetch(url , 'POST')
 
-    const sendForm =(e)=>{
-
+    const sendForm =async (e)=>{
+        e.preventDefault()
         console.log("hi")
         console.log(hostName);
         console.log(uriStartRegex);
@@ -43,23 +40,22 @@ export default function Form(props) {
             "requestPerSecond": requestPerSecond,
             "features": [{"name": features.name, "selector":features.selector}]
         }
-        const obj2 = {"hostName": "meghdadit", "uriStartRegex": "heif", "dataSetSize": "1","webPageVisitSize": "3", "requestPerSecond": "0.0", "features": [{"name": "Ename", "selector": "#SharedMessage_ContentPlaceHolder1_lblMobileTitle2"}]}
-
-        setdata(axiosFunction(url , 'POST' , obj2))
-
+        // const obj2 = {"hostName": "meghdadit", "uriStartRegex": "heif", "dataSetSize": "1","webPageVisitSize": "3", "requestPerSecond": "0.0", "features": [{"name": "Ename", "selector": "#SharedMessage_ContentPlaceHolder1_lblMobileTitle2"}]}
+      
+            setdata(await axiosFunction(url , 'POST' , obj))
+            console.log("sjgh")
+        
         console.log("data",data)
-
-
     }
-    const prop = data ? {
-        openModal : true ,
-        data : data
+    // const prop = data ? {
+    //     openModal : true ,
+    //     data : data
 
 
-    } : {
-        openModal : false,
-        data : null
-    }
+    // } : {
+    //     openModal : false,
+    //     data : null
+    // }
     return (
         <>
             <div className="bg-vividskyblue">
@@ -165,7 +161,7 @@ export default function Form(props) {
                         <div className="bg-isabelline pb-10 px-4 py-3 text-right sm:px-6">
                             <button
                                 type="submit"
-                                onClick={() => props.showModal("ask")}
+                                onClick={() => data ? props.showModal("ask") : null}
                                 className="inline-flex justify-center rounded-md border border-transparent bg-blackolive py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blackolive focus:outline-none focus:ring-2 focus:ring-blackolive focus:ring-offset-2"
                             >
                                 ارسال درخواست
@@ -176,7 +172,7 @@ export default function Form(props) {
             </div>
             </div>
 
-            <Modal title="درخواست شما با موفقیت ثبت گردید" open={props.ask} onCancel={() => props.handleCancel("ask")}
+            {data ? <Modal title="درخواست شما با موفقیت ثبت گردید" open={props.ask} onCancel={() => props.handleCancel("ask")}
             footer={[]}
             >
                 <Input.Group compact>
@@ -186,16 +182,17 @@ export default function Form(props) {
                         pointerEvents: "none"
                         }}
                         defaultValue="Task ID is here"
+                        value={data}
                     />
                     <Tooltip title="copy Task ID">
                         <Button onClick={() => {
-                            navigator.clipboard.writeText("Task Id")
-                            alert("Copied the text: " + "Task id");
+                            navigator.clipboard.writeText(data)
+                            // alert("Copied the text: " + "Task id");
                            }
                         } icon={<CopyOutlined />} />
                     </Tooltip>
                 </Input.Group>
-            </Modal>
+            </Modal>: null }
         </>
 
     )

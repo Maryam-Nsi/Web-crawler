@@ -18,7 +18,6 @@ import crawlerIcon from './icons/crawler.png'
 import Howtowork from './Howtowork';
 import SendId from './SendId';
 import Form from './Form';
-import ResultModal from './ResultModal';
 const solutions = [
     {
         name: 'تحلیل داده ها',
@@ -263,6 +262,8 @@ export default function Header() {
             <Form ask={ask} showModal={showModal} handleCancel={handleCancel} />
             {<Modal open={nahve} onCancel={() => handleCancel("nahve")}
             footer={[]}
+            width={1000}
+            centered
             >
                 <Howtowork />
             </Modal>}
@@ -297,9 +298,8 @@ export default function Header() {
             footer={[]}
             className="padstyle"
             >
-                <SendId />
+                <SendId handleCancel={handleCancel} res={res} showModal={showModal} />
             </Modal>}
-            <ResultModal res={res} handleCancel={handleCancel} />
         </div>
     )
 }
