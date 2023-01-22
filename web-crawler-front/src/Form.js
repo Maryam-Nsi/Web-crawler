@@ -20,7 +20,7 @@ export default function Form(props) {
     })
     const [data , setdata] = useState(null)
     // const alert = useAlert()
-    const url = "http://localhost:8080/v1/"
+    const url = "http://37.32.6.195:8080/v1/"
     // const { data, isPending, error , postData} = useFetch(url , 'POST')
 
     const sendForm =async (e)=>{
