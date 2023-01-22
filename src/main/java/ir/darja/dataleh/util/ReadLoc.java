@@ -22,7 +22,9 @@ public class ReadLoc {
         DocumentBuilder builder = factory.newDocumentBuilder();
 
         //Build Document
-        Document document = builder.parse(new File(String.format("src/main/resources/sitemap/%s.xml", hostname)));
+        Document document = builder.parse(
+                getClass().getResourceAsStream(String.format("/sitemap/%s.xml", hostname))
+        );
 //        Document document = builder.parse(xml);
 
         //Normalize the XML Structure; It's just too important !!
