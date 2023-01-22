@@ -1,6 +1,19 @@
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import crawlerIcon from './icons/crawler.png'
+import { useState } from 'react'
+import { axiosFunction } from './hooks/axiosFunction'
 export default function SignIn() {
+  const [identifier , setIdentifier] = useState("")
+  const [pagesize , setPagesize] = useState("");
+  const [pagenumber , setPagenumber] = useState("");
+  const [data , setData] = useState("");
+  const sendForm = (e)=>{
+
+    e.preventDefault()
+    const url =`http://localhost:8080?taskId=${identifier}&pageNumber=${pagenumber}&pageSize=${pagesize}`
+    setData (axiosFunction(url , 'GET' , null))
+
+  }
   return (
     <>
       <div className="bg-isabelline flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 rounded-3xl">
@@ -15,7 +28,7 @@ export default function SignIn() {
               Web crawler
             </h2>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" method="post" onSubmit={sendForm}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>

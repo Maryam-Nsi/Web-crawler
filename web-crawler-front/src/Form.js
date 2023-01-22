@@ -21,7 +21,7 @@ export default function Form(props) {
         name :"",
         selector :""
     })
-    const [ddata , setDdata] = useState(null)
+    const [data , setData] = useState(null)
     // const alert = useAlert()
     const url = "http://localhost:8080/"
     // const { data, isPending, error , postData} = useFetch(url , 'POST')
@@ -45,15 +45,14 @@ export default function Form(props) {
         }
         const obj2 = {"hostName": "meghdadit", "uriStartRegex": "heif", "dataSetSize": "1","webPageVisitSize": "3", "requestPerSecond": "0.0", "features": [{"name": "Ename", "selector": "#SharedMessage_ContentPlaceHolder1_lblMobileTitle2"}]}
 
-        setDdata (axiosFunction(url , 'POST' , obj2))
-
-        console.log("data",ddata)
+        setData (axiosFunction(url , 'POST' , obj2))
+        console.log("data",data)
 
 
     }
-    const prop = ddata ? {
+    const prop = data ? {
         openModal : true ,
-        data : ddata
+        data : data
 
 
     } : {

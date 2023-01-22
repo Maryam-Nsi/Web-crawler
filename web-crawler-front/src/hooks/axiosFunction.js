@@ -2,9 +2,7 @@
 import axios from "axios"
 export const axiosFunction = async (url , method , data) => {
   const config = {
-    withCredentials: false,
     headers:{
-      crossdomain: true ,
       'Content-Type': 'application/json',
       'accept':'application/json'
     }
