@@ -1,7 +1,8 @@
 import {  useState } from "react"
 // import { useAlert } from 'react-alert'
-import {useAxios} from './hooks/useAxios'
+import {useFetch} from './hooks/useFetch'
 import GetIdPop from "./GetIdPop";
+import { axiosFunction } from "./hooks/axiosFunction";
 
 export default function Form() {
     const [hostName , setHostName ] = useState("");
@@ -13,9 +14,11 @@ export default function Form() {
         name :"",
         selector :""
     })
+    const [ddata , setDdata] = useState(null)
     // const alert = useAlert()
-    const url = "http://localhost:8080"
-    const { data, isPending, error , postData} = useAxios(url , 'POST')
+    const url = "http://localhost:8080/"
+    // const { data, isPending, error , postData} = useFetch(url , 'POST')
+
     const sendForm =(e)=>{
         e.preventDefault();
         // console.log("hi")
@@ -34,15 +37,16 @@ export default function Form() {
             "features": [{"name": features.name, "selector":features.selector}]
         }
         const obj2 = {"hostName": "meghdadit", "uriStartRegex": "heif", "dataSetSize": "1","webPageVisitSize": "3", "requestPerSecond": "0.0", "features": [{"name": "Ename", "selector": "#SharedMessage_ContentPlaceHolder1_lblMobileTitle2"}]}
-        postData(obj2)
-        console.log(JSON.stringify(obj2))
-        console.log("data",data)
-        console.log("error",error)
+
+        setDdata (axiosFunction(url , 'POST' , obj2))
+
+        console.log("data",ddata)
+
 
     }
-    const prop = error ? {
+    const prop = ddata ? {
         openModal : true ,
-        data : data
+        data : ddata
 
 
     } : {
