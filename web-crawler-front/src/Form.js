@@ -3,8 +3,15 @@ import {  useState } from "react"
 import {useFetch} from './hooks/useFetch'
 import GetIdPop from "./GetIdPop";
 import { axiosFunction } from "./hooks/axiosFunction";
+import { CopyOutlined } from '@ant-design/icons';
+import {
+  Button,
+  Input,
+  Tooltip,
+  Modal
+} from 'antd';
 
-export default function Form() {
+export default function Form(props) {
     const [hostName , setHostName ] = useState("");
     const [uriStartRegex , setUriStartRegex]= useState("");
     const [dataSetSize , setDataSetSize] = useState("");
@@ -54,12 +61,13 @@ export default function Form() {
         data : null
     }
     return (
-        <div className="bg-vividskyblue">
+        <>
+            <div className="bg-vividskyblue">
             {/* {data ? <IdPop {...prop}  /> : null } */}
             {true ? <GetIdPop {...prop}  /> : null }
             <div className="bg-vividskyblue pb-10 pt-16 m-auto h-3/4 w-1/2 md:col-span-2 md:mt-0">
                 <h3 className="text-center text-3xl font-medium leading-6 text-gray-900">فرم درخواست خزش</h3>
-                <p className="text-center mt-4 text-sm text-gray-600">برای انجام خزش کامل بر روی دامنه مورد نظر خود فرم زیر را کامل کنید</p>
+                <p className="text-center mt-4 text-sm text-gray-900">.برای انجام خزش کامل بر روی دامنه مورد نظر خود، فرم زیر را کامل کنید</p>
                 <form method="post" onSubmit={sendForm}>
                     <div className=" bg-isabelline mt-10 pt-10 overflow-hidden shadow sm:rounded-md">
                         <div className="bg-isabelline px-4 py-5 sm:p-6">
@@ -73,7 +81,7 @@ export default function Form() {
                                         name="host-name"
                                         id="host-name"
                                         onChange={setHostName}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive sm:text-sm"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
 
@@ -86,7 +94,7 @@ export default function Form() {
                                         name="uri_start"
                                         id="uri_start"
                                         onChange={setUriStartRegex}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive sm:text-sm"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
@@ -98,7 +106,7 @@ export default function Form() {
                                         name="dataset_size"
                                         id="dataset_size"
                                         onChange={setDataSetSize}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive sm:text-sm"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
@@ -110,7 +118,7 @@ export default function Form() {
                                         name="web_page_visit_size"
                                         id="web_page_visit_size"
                                         onChange={setWebPageVisitSize}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive sm:text-sm"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
@@ -122,7 +130,7 @@ export default function Form() {
                                         name="request_per_second"
                                         id="request_per_second"
                                         onChange={setRequestPerSecond}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive sm:text-sm"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3 border-2 p-3 rounded-md border-gray-300">
@@ -137,7 +145,7 @@ export default function Form() {
                                         name="feature-name"
                                         id="feature-name"
                                         onChange={e=>setFeatures({...features , name : e.target.value})}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive sm:text-sm"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                     <label htmlFor="feature_selector" className="block text-sm font-medium text-gray-700 text-right">
                                         انتخاب گر ویژگی
@@ -147,7 +155,7 @@ export default function Form() {
                                         name="feature_selector"
                                         id="feature_selector"
                                         onChange={e=>setFeatures({...features , selector : e.target.value})}
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive sm:text-sm"
+                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blackolive focus:ring-blackolive text-lg"
                                     />
                                 </div>
 
@@ -156,6 +164,7 @@ export default function Form() {
                         <div className="bg-isabelline pb-10 px-4 py-3 text-right sm:px-6">
                             <button
                                 type="submit"
+                                onClick={() => props.showModal("ask")}
                                 className="inline-flex justify-center rounded-md border border-transparent bg-blackolive py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blackolive focus:outline-none focus:ring-2 focus:ring-blackolive focus:ring-offset-2"
                             >
                                 ارسال درخواست
@@ -165,5 +174,28 @@ export default function Form() {
                 </form>
             </div>
             </div>
+
+            <Modal title="درخواست شما با موفقیت ثبت گردید" open={props.ask} onCancel={() => props.handleCancel("ask")}
+            footer={[]}
+            >
+                <Input.Group compact>
+                    <Input
+                        style={{
+                        width: 'calc(100% - 50px)',
+                        pointerEvents: "none"
+                        }}
+                        defaultValue="Task ID is here"
+                    />
+                    <Tooltip title="copy Task ID">
+                        <Button onClick={() => {
+                            navigator.clipboard.writeText("Task Id")
+                            alert("Copied the text: " + "Task id");
+                           }
+                        } icon={<CopyOutlined />} />
+                    </Tooltip>
+                </Input.Group>
+            </Modal>
+        </>
+
     )
 }

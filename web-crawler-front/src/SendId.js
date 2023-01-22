@@ -19,52 +19,43 @@ export default function SignIn() {
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
+                <label htmlFor="identifier" className="sr-only">
+                  ID
                 </label>
                 <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  id="identifier"
+                  name="identifier"
+                  type="text"
                   required
                   className="m-1 relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blackolive focus:outline-none focus:ring-blackolive sm:text-sm"
-                  placeholder="Email address"
+                  placeholder="ID"
                 />
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
+                <label htmlFor="pagesize" className="sr-only">
+                  اندازه صفحه
                 </label>
                 <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
+                  id="pagesize"
+                  name="pagesize"
+                  type="number"
                   required
                   className="m-1 relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blackolive focus:outline-none focus:ring-blackolive sm:text-sm"
-                  placeholder="Password"
+                  placeholder="Page Size / اندازه صفحه"
                 />
               </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-blackolive focus:ring-blackolive"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                  مرا به یاد داشته باش
+              <div>
+                <label htmlFor="pagenumber" className="sr-only">
+                  شماره صفحه
                 </label>
-              </div>
-
-              <div className="text-sm">
-                <button href="#" className="font-medium text-blackolive hover:text-blackolive">
-                  فراموشی رمز عبور؟
-                </button>
+                <input
+                  id="pagenumber"
+                  name="pagenumber"
+                  type="number"
+                  required
+                  className="m-1 relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blackolive focus:outline-none focus:ring-blackolive sm:text-sm"
+                  placeholder="Page Number / شماره صفحه"
+                />
               </div>
             </div>
 
@@ -76,7 +67,7 @@ export default function SignIn() {
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon className="h-5 w-5 text-blackolive group-hover:text-blackolive" aria-hidden="true" />
                 </span>
-                ورود
+                مشاهده داده ها
               </button>
             </div>
           </form>
